@@ -7,8 +7,8 @@ Vagrant.configure(2) do |config|
 
   config.vm.box = $box_name
 
-  config.ssh.private_key_path = ['vagrant.pem', File.join(ENV['HOME'], '.ssh', 'id_rsa')]
-  config.ssh.forward_agent = true
+  # config.ssh.private_key_path = ['vagrant.pem', File.join(ENV['HOME'], '.ssh', 'id_rsa')]
+  # config.ssh.forward_agent = true
 
   # config.vm.network "private_network", ip: $vagrant_ip
 
