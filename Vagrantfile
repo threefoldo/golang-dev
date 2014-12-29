@@ -13,14 +13,10 @@ Vagrant.configure(2) do |config|
   # config.vm.network "private_network", ip: $vagrant_ip
 
   config.vm.provider "virtualbox" do |v|
-    v.customize ["modifyvm", :id, "--memory", $memory, "--name", $domain_name,"--cpus", $cpus]
+    v.customize ["modifyvm", :id, "--memory", $memory, "--cpus", $cpus]
     v.gui = true
   end
 
-  config.vm.provision "shell", inline <<-SHELL
-    sudo sed -i 's/us.archive.ubuntu.com/mirrors.163.com/g' /etc/apt/sources.list
-    sudo apt-get update
-    sudo apt-get install -y git emacs24 screen
-  SHELL
+  config.vm.provision "shell", path: "packages.sh", run: "once"
 
 end
